@@ -5,7 +5,7 @@ import Footer from './components/views/Footer/Footer';
 import Home from './components/views/Home/Home';
 import SinglePost from './components/features/SinglePost/SinglePost';
 import PostEdit from './components/features/PostEdit/PostEdit';
-import PostAdd from './components/features/PostAdd/PostAdd';
+import AddPost from './components/views/AddPost/AddPost';
 import About from './components/pages/About/About';
 import NotFound from './components/pages/NotFound/NotFound';
 
@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route exact path='/post/:postId' element={<SinglePost />} />
-          <Route path='/post/add' element={<PostAdd />} />
+          <Route path='/post/add' element={<AddPost />} />
           <Route exact path='/post/edit/:postId' element={<PostEdit />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
