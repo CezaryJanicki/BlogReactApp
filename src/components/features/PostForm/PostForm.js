@@ -78,7 +78,7 @@ const PostForm = ({ action, actionText, onCancel, ...props }) => {
       </Form.Group>
 
       <div className="d-flex justify-content-end">
-        <Button variant='primary' type='submit' className='mr-4'>{actionText}</Button>
+        <Button variant='primary' type='submit' className='me-3'>{actionText}</Button>
         <Button variant='secondary' onClick={onCancel}>Cancel</Button>
       </div>
     </Form>
