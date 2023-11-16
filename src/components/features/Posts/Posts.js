@@ -1,4 +1,4 @@
-import Post from '../Post/Post';
+import Post from '../../views/Post/Post.js';
 import { Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { getAllPosts } from '../../../redux/postsRedux.js';
