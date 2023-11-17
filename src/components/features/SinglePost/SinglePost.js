@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { getPostById } from '../../../redux/postsRedux';
 import { Link, Navigate } from 'react-router-dom';
 import DeletePost from '../../features/DeletePost/DeletePost';
+import { dateToString } from '../../../utils/dateToString';
 
 const SinglePost = () => {
   const { postId } = useParams();
@@ -32,12 +33,12 @@ const SinglePost = () => {
           {postData.author}
           <br />
           <span className='fw-bold'>Published: </span>
-          {postData.publishedDate}
+          {dateToString(postData.publishedDate)}
           <br />
         </Col>
       </Row>
       <Row className='mt-4 justify-content-center'>
-        <Col className='col-md-8 align-self-center'>{postData.content}</Col>
+        <Col className='col-md-8 align-self-center' dangerouslySetInnerHTML={{ __html: postData.content }}></Col>
       </Row>
     </Container>
   );

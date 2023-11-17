@@ -1,0 +1,8 @@
+.quill {
+  > div:first-child {
+      display: none !important;
+  }
+      & .ql-align-justify{
+        white-space: pre-wrap
+      }
+    }

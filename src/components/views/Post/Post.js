@@ -1,5 +1,6 @@
 import { Col, Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { dateToString } from '../../../utils/dateToString';
 
 const Post = (props) => {
   return (
@@ -12,7 +13,7 @@ const Post = (props) => {
             {props.author}
             <br />
             <span className='fw-bold'>Published: </span>
-            {props.publishedDate}
+            {dateToString(props.publishedDate)}
             <br />
             <span className='d-inline-block text-truncate col-12'>
               {props.shortDescription}
