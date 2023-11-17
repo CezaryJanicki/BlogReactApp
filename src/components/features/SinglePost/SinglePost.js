@@ -35,6 +35,9 @@ const SinglePost = () => {
           <span className='fw-bold'>Published: </span>
           {dateToString(postData.publishedDate)}
           <br />
+          <span className='fw-bold'>Category: </span>
+            {postData.category}
+          <br />
         </Col>
       </Row>
       <Row className='mt-4 justify-content-center'>

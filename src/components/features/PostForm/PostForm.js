@@ -7,6 +7,8 @@ import styles from './PostForm.module.scss';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useForm } from 'react-hook-form';
+import { getAllCategories } from '../../../redux/categoriesRedux';
+import { useSelector } from 'react-redux';
 
 const PostForm = ({ action, actionText, onCancel, ...props }) => {
   const [title, setTitle] = useState(props.title || '');
@@ -18,13 +20,15 @@ const PostForm = ({ action, actionText, onCancel, ...props }) => {
   const [content, setContent] = useState(props.content || '');
   const [dateError, setDateError] = useState(false);
   const [contentError, setContentError] = useState(false);
+  const [category, setCategory] = useState(props.category || '');
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
+  const categories = useSelector((state) => getAllCategories(state));
 
   const handleSubmit = (e) => {
     setContentError(!content);
     setDateError(!publishedDate);
     if (content && publishedDate) {
-      action({ title, author, publishedDate, shortDescription, content });
+      action({ title, author, publishedDate, shortDescription, content, category });
       setTitle('');
       setAuthor('');
       setPublishedDate('');
@@ -81,7 +85,19 @@ const PostForm = ({ action, actionText, onCancel, ...props }) => {
         </small>
       )}
       </Form.Group>
-
+      <Form.Group className='mb-4 col-md-6' controlId='formPostCategory'>
+        <Form.Label>Select Category...</Form.Label>
+        <Form.Select
+          selected={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          {categories.map((category) => (
+            <option key={category} id={category}>
+              {category}
+            </option>
+          ))}
+        </Form.Select>
+      </Form.Group>
       <Form.Group className='mb-4' controlId='formPostShortDescription'>
         <Form.Label>Short Description</Form.Label>
           <Form.Control
